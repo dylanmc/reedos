@@ -20,6 +20,7 @@ pub mod hw;
 pub mod lock;
 pub mod trap;
 pub mod vm;
+pub mod threads;
 
 use crate::device::uart;
 use crate::hw::param;
@@ -111,6 +112,9 @@ fn main() -> ! {
             vm::test_palloc();
             log!(Debug, "Testing galloc allocation and freeing...");
             vm::test_galloc();
+            log!(Debug, "Testing thread switch...");
+            threads::test_threads();
+
         }
     } else {
         //Interrupt other harts to init kpgtable.

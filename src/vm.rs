@@ -88,6 +88,11 @@ fn pfree(page: Page) -> Result<(), VmError> {
     unsafe { PAGEPOOL.get_mut().unwrap().pfree(page) }
 }
 
+// no free yet...(dylan here)
+pub fn palloc_plural(count: usize) -> Result<*mut usize, VmError> {
+    unsafe { PAGEPOOL.get_mut().unwrap().palloc_plural(count) }
+}
+
 /// Initialize the kernel VM system.
 /// First, setup the kernel physical page pool.
 /// We start the pool at the end of the .bss section, and stop at the end of physical memory.
